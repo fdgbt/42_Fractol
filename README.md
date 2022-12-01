@@ -7,6 +7,8 @@ Created by Benoît Mandelbrot in 1974 from the Latin "fractus", which means "bro
 Many natural phenomena – such as the appearance of romanesco cabbage – have rough fractal shapes.
 ![Romanesco_broccoli_(Brassica_oleracea)](https://user-images.githubusercontent.com/52746061/205169866-e702e9a5-aa2b-4736-a4a0-c6c281553600.jpg)
 
+https://fr.wikipedia.org/wiki/Fractale
+
 ## Expected Result
 The program include 9 different and interesting fractals.  
 They are all configurable in depth, with colors customization, mathematical variables, interaction modes, advanced zoom, etc.  
