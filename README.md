@@ -93,7 +93,7 @@ chmod 774 lib/minilibx-linux/configure
 
 ## Keywords
 2D programming  
-Multi-Threading 
+Multi-Threading  
 Complex numbers  
 Mathematical equations  
 Fractals  
