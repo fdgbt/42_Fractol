@@ -70,5 +70,5 @@ chmod 774 lib/minilibx-linux/configure
 2D programming  
 Optimization techniques  
 Complex Numbers  
-mathematical equations  
+Mathematical equations  
 Fractals  
