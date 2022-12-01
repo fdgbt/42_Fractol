@@ -8,10 +8,10 @@ Many natural phenomena – such as the appearance of romanesco cabbage – have 
 ![Romanesco_broccoli_(Brassica_oleracea)](https://user-images.githubusercontent.com/52746061/205169866-e702e9a5-aa2b-4736-a4a0-c6c281553600.jpg)
 
 ## Expected Result
-The program include 9 differents and interesting fractals.  
+The program include 9 different and interesting fractals.  
 They are all configurable in depth, with colors customization, mathematical variables, psychedelic mode, etc.  
 
-Look for the MAN to see all the possibilities and commands.
+Look for the MAN to see all the possibilities and commands!
 
 ## MinilibX
 This project use the "MinilibX" library.  
