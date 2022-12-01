@@ -10,7 +10,7 @@ Many natural phenomena – such as the appearance of romanesco cabbage – have 
 https://en.wikipedia.org/wiki/Fractal
 
 ## Expected Result
-The program include 9 different and interesting fractals.  
+The program includes 9 different and interesting fractals.  
 They are all configurable in depth, with colors customization, mathematical variables, interaction modes, advanced zoom, etc.  
 
 Look for the MAN to see all the possibilities and commands!
