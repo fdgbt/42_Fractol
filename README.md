@@ -54,6 +54,12 @@ make fclean
 ```
 
 ## Screenshots
+![mandelbrot_neutral_ssaa8](https://user-images.githubusercontent.com/52746061/205167885-e67f2d7e-cbc0-4ede-bc6e-d5ea0883dc8e.png)  
+![julia_fairy_ssaa8](https://user-images.githubusercontent.com/52746061/205167784-4625719b-3d40-48dc-9511-55fa1e99b1c9.png)  
+![julia_hsv_ssaa8](https://user-images.githubusercontent.com/52746061/205167823-20f8035c-f357-46df-8755-3424a8f39510.png)  
+![burning_ship_fire_ssaa8](https://user-images.githubusercontent.com/52746061/205167719-3b9fd6aa-ea60-4842-8dd3-a985ca0d37dd.png)  
+![barnsley_camo_ssaa8](https://user-images.githubusercontent.com/52746061/205167631-c36faa2e-1400-479d-846e-af0ff666d05b.png)  
+![buddha_nasa_ssaa8](https://user-images.githubusercontent.com/52746061/205167666-e8d8e991-df9c-4440-8967-306b93b0eddc.png)  
 
 More screenshots are availables in the "screens" folder.
 
