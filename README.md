@@ -2,7 +2,7 @@
 This project aims to use 2D programming to discover the psychedelic universe of fractals.
 
 ## Example
-Created by Benoît Mandelbrot in 1974 from the Latin root fractus, which means "broken", "irregular", a fractal figure is a mathematical object, such as a curve or a surface, whose structure is invariant whatever the change of scale.  
+Created by Benoît Mandelbrot in 1974 from the Latin "fractus", which means "broken", "irregular", a fractal figure is a mathematical object, such as a curve or a surface, whose structure is invariant whatever the change of scale.  
 
 Many natural phenomena – such as the appearance of romanesco cabbage – have rough fractal shapes.
 ![Romanesco_broccoli_(Brassica_oleracea)](https://user-images.githubusercontent.com/52746061/205169866-e702e9a5-aa2b-4736-a4a0-c6c281553600.jpg)
