@@ -78,7 +78,7 @@ make fclean
 ![julia_hsv_ssaa8](https://user-images.githubusercontent.com/52746061/205167823-20f8035c-f357-46df-8755-3424a8f39510.png)  
 ![burning_ship_fire_ssaa8](https://user-images.githubusercontent.com/52746061/205167719-3b9fd6aa-ea60-4842-8dd3-a985ca0d37dd.png)  
 ![barnsley_camo_ssaa8](https://user-images.githubusercontent.com/52746061/205167631-c36faa2e-1400-479d-846e-af0ff666d05b.png)  
-![buddha_nasa_ssaa8](https://user-images.githubusercontent.com/52746061/205167666-e8d8e991-df9c-4440-8967-306b93b0eddc.png)  
+![buddha_nasa_ssaa8_2](https://user-images.githubusercontent.com/52746061/205173610-385d3793-bda0-458c-9c56-22cc2d7b401c.png)  
 
 More screenshots are availables in the "screens" folder.
 
