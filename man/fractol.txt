@@ -1,0 +1,656 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    fractol.txt                                        :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fdagbert <fdagbert@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/03/23 22:48:02 by fdagbert          #+#    #+#              #
+#    Updated: 2021/03/23 22:48:17 by fdagbert         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+
+
+*** INSTALL ***
+
+
+-> Go to the Fractol folder and execute the command "make".
+
+   Optimized for Linux (Ubuntu / Debian).
+   Compatible with Mac OS (See Tips).
+
+
+
+*** UNINSTALL ***
+
+
+-> Go to the Fractol folder and execute the command "make fclean".
+
+
+
+*** USAGE ***
+
+
+-> Start the program "fractol" followed by the name of the fractal.
+
+ ./fractol [fractal_name]
+
+
+-> To see the list of available fractals :
+
+ ./fractol -l
+
+
+-> All fractals are listed below :
+
+ 1) ./fractol mandelbrot
+ 2) ./fractol julia
+ 3) ./fractol burning_ship
+ 4) ./fractol multibrot
+ 5) ./fractol buddhabrot
+ 6) ./fractol newton
+ 7) ./fractol koch
+ 8) ./fractol sierpinski
+ 9) ./fractol barnsley
+
+-> Fractals can be switched indefinitely at runtime.
+
+-> Only one fractal can be displayed at a time (see Tips).
+
+
+
+*** OPTIONS USAGE ***
+
+
+-> The options "Help" and "List" are independants and will exit directly.
+
+ Examples :
+
+ ./fractol -h
+
+ ./fractol -l
+
+
+-> The others options are facultative.
+
+-> They can be used in any order and combined together.
+
+ Examples :
+
+ ./fractol [-d] mandelbrot
+
+ ./fractol mandelbrot [-d]
+
+ ./fractol [-de] mandelbrot [-r 500]
+
+
+
+*** OPTIONS HELPER ***
+
+
+[ ]| Optional
+   |	Means that the argument is facultative for usage.
+   | Warning
+   |	Attempt to activate an option more than one time will result by an error.
+   |	Some specific options require an argument.
+   |	In this case, it must be placed directly after the opt, separated by a space char.
+   | The following examples are equivalents :
+   |	./fractol -d -e -r 500 -H mandelbrot
+   |	./fractol -e -r 500 mandelbrot -dH
+   |	./fractol -deH mandelbrot -r 500
+   |	./fractol mandelbrot -deHr 500
+
+-h | Help
+   |	Print this man page into the terminal.
+   | Example
+   |	./fractol -h
+   | Warning
+   |	Using this option will automatically quit the program without to display the fractal.
+
+-l | List
+   |	Print the list of available fractals and their number into the terminal.
+   | Example
+   |	./fractol -l
+   | Warning
+   |	Using this option will automatically quit the program without to display the fractal.
+
+-f | Fractal number
+   |	Use the number of the fractal instead of its name.
+   |	The corresponding number need to be specified in argument.
+   |	See the corresponding number in the fractal list (-l).
+   | Examples
+   |	./fractol -f 1
+   |	./fractol -f 9
+   | Warning
+   |	Use this option additionally to the fractal name will result by an error.
+   |	Attempt to specify more than one fractal will result by an error.
+   |	Attempt to specify an unassigned number will result by an error.
+   |	You can also change the displayed fractal at runtime.
+
+-d | Debug
+   |	Print in dark color the different steps, events and values into the terminal.
+   |	Helpfull for debugging and transmit logs in case of troubleshooting.
+   | Example
+   |	./fractol -d
+
+-r | Resolution
+   |	Change the resolution of the screen at starting.
+   |	The side of the screen need to be specified in argument.
+   | Examples
+   |	./fractol -r 500 mandelbrot
+   |	./fractol -r 2048 mandelbrot
+   | Warning
+   |	Specify a value less than or equal to '0'
+   |	Specify a value greater than 10 000 will result by an error.
+   |	You must specify only one side of the screen as in the example.
+   |	A non-square screen would result by a distorted fractal.
+   |	For this reason, it is not possible to change the height independently of the width.
+
+-i | Iteration Max
+   |	Change the Iteration Max value at starting.
+   |	The Iteration value need to be specified in argument.
+   | Example
+   |	./fractol -i 512 julia
+   | Warning
+   |	Specify a value less than or equal to '0' will result by an error.
+   |	You can also modify this value at runtime.
+
+-I | Iteration Min
+   |	Change the Iteration Min value at starting.
+   |	The Iteration value need to be specified in argument.
+   | Example
+   |	./fractol -I 20 buddhabrot
+   | Warning
+   |	This option acts as a filter and will have effect only on the buddhabrot fractal.
+   |	Specify a value less than '0' will result by an error.
+   |	Specify a value greater than Iteration Max will result by an error.
+   |	You can also modify this value at runtime.
+
+-L | Level
+   |	Change the Level value at starting.
+   |	The Level value need to be specified in argument.
+   | Example
+   |	./fractol -L 4 koch
+   | Warning
+   |	Specify a value less than '0' will result by an error.
+   |	This option will only have effect on the following fractal :
+   |	 - multibrot
+   |	 - buddhabrot
+   |	 - koch
+   |	 - sierpinski
+   |	You can also modify this value at runtime.
+
+-s | Sample
+   |	Change the Sample value at starting.
+   |	The Sample value need to be specified in argument.
+   | Example
+   |	./fractol -s 2000000 buddhabrot
+   | Warning
+   |	Specify a value less than or equal to '0' will result by an error.
+   |	This option will have effect only on the following fractal :
+   |	 - buddhabrot
+   |	 - barnsley
+   |	You can also modify this value at runtime.
+
+-m | Mode Color
+   |	Change the Mode Color at starting.
+   | Examples
+   |	./fractol -m 5 mandelbrot
+   | Warning
+   |	Specify a value less than '0' will result by an error.
+   |	Specify a value greater than '5' will result by an error.
+   |	You can also modify this value at runtime.
+
+-p | Palette Color
+   |	Change the Palette Color at starting.
+   |	The Palette number need to be specified in argument.
+   | Example
+   |	./fractol -m 1 -p 3 mandelbrot
+   | Warning
+   |	Specify a value less than '0' will result by an error.
+   |	Specify a value greater than "19" will result by an error.
+   |	Using this option will have no effect with the following Mode Color :
+   |	 - 0 (Default)
+   |	 - 4 (RGB)
+   |	 - 5 (HSV)
+   |	You can also modify this value at runtime.
+
+-t | Turn Palette Color
+   |	Turn the Palette Color at starting.
+   |	The number of shifting need to be specified in argument.
+   | Examples
+   |	./fractol -t 2 mandelbrot
+   | Warning
+   |	Specify a value less than '0' will result by an error.
+   |	Specify a value greater than '4' will result by an error.
+   |	Using this option will have no effect with the following Mode Color :
+   |	 - 5 (HSV)
+   |	You can also modify this value at runtime.
+
+-b | Background Color
+   |	Change the Background Color at starting.
+   |	The Background Color value need to be specified in argument.
+   | Example
+   |	./fractol -b 0 mandelbrot
+   | Warning
+   |	Specify a value less than '0' will result by an error.
+   |	Specify a value greater than "19" will result by an error.
+   |	Using this option will have no effect with the following fractal :
+   |	 - buddhabrot
+   |	 - newton
+   |	 - koch
+   |	 - sierpinski
+   |	 - barnsley
+   |	You can also modify this value at runtime.
+
+-B | Background Color (Turn)
+   |	Change the Background Color by turning the Palette Color at starting.
+   |	The number of shifting need to be specified in argument.
+   | Example
+   |	./fractol -B 1 mandelbrot
+   | Warning
+   |	Specify a value less than '0' will result by an error.
+   |	Specify a value greater than '5' will result by an error.
+   |	Using this option will have no effect with the following fractal :
+   |	 - buddhabrot
+   |	 - newton
+   |	 - koch
+   |	 - sierpinski
+   |	 - barnsley
+   |	You can also modify this value at runtime.
+
+-a | Anti-Alliasing level (Super-Sampling)
+   |	Change the level of SSAA at starting.
+   | Example
+   |	./fractol -a 8 mandelbrot
+   | Warning
+   |	Use the Eco+ Mode will disable SSAA and force its value to '1'.
+   |	Specify a value less than '1' will result by an error.
+   |	Specify a value greater than '8' will result by an error.
+   |	SSAA value need to be greater than '1' to have effect.
+   |	You can also modify this value at runtime.
+
+-e | Eco+ Mode
+   |	Reduce memory usage by 64 and divide the launch time by 2.
+   |	Disable completely the SSAA.
+   | Example
+   |	./fractol -e mandelbrot
+   | Warning
+   |	Use the Eco+ Mode will disable SSAA and force its value to '1'.
+   |	The SSAA will not be available at all, even at runtime.
+
+-H | Disable Hud
+   |	Save screen space and time process by disabling the hud.
+   | Example
+   |	./fractol -H mandelbrot
+   | Warning
+   |	The HUD will not be available at all, even at runtime.
+
+-M | Disable Multi-Threading
+   |	Disable the Multi-Threading process.
+   |	Usefull for time measurements or OS troubleshooting.
+   | Example
+   |	./fractol -M mandelbrot
+   | Warning
+   |	The Multi-Threading will not be available at all, even at runtime.
+
+-F | Create FdF file
+   |	Create a file compatible with the "Fil de Fer" (WireFrame) program at exit.
+   |	The file will contain the iterations for each pixel, allowing special 3D visualization of the fractal.
+   | Example
+   |	./fractol -M mandelbrot
+   | Warning
+   |	You can also make a "fdf shot" during the runtime.
+   |	The filename contains the date and the hour of the file creation.
+   |	For this reason, you can generate at any time various files of the same fractal.
+
+
+
+*** KEYBOARD CONTROLS ***
+
+
+1		| Switch to Mandelbrot fractal.
+
+2		| Switch to Julia fractal.
+
+3		| Switch to Burning_Ship fractal.
+
+4		| Switch to Multibrot fractal.
+
+5		| Switch to Buddhabrot fractal.
+
+6		| Switch to Newton fractal.
+
+7		| Switch to Koch fractal.
+
+8		| Switch to Sierpinski fractal.
+
+9		| Switch to Barnsley fractal.
+
+ESCAPE		| Quit the program.
+
+BACKSPACE	| Reset all the fractal parameters.
+
+ENTER		| Reset all the color parameters.
+
+ARROW_LEFT	| Increase the X-axis.
+
+ARROW_RIGHT	| Decrease the X-axis.
+
+ARROW_UP	| Increase the Y-axis.
+
+ARROW_DOWN	| Decrease the Y-axis.
+
+PAGE_UP 	| Increase the Iteration Max.
+
+PAGE_DOWN	| Decrease the Iteration Max.
+
+START		| Increase the Level of power / recursivity.
+
+END		| Decrease the Level of power / recursivity.
+
+INSER		| Increase the Sample.
+
+INSER		| Decrease the Sample.
+
+MENU		| Increase the filter (Iteration Minimum).
+
+MAJ RIGHT	| Decrease the filter (Iteration Minimum).
+
+A		| Increase the level of Anti-Alliasing (SSAA).
+
+Z		| Decrease the level of Anti-Alliasing (SSAA).
+
+C		| Set the Constant Mode.
+		|  Move the mouse to shift the value of C.
+		|  See Math Reminder for more details.
+
+J		| Switch the Constant value.
+		|  See Math Reminder for more details.
+
+K		| Switch back the Constant value.
+		|  See Math Reminder for more details.
+
+P		| Set the Psychedelic Mode.
+		|  Move the mouse to switch the palette color.
+
+E		| Set the Epileptic Mode.
+		|  Move the mouse to roll the palette color.
+
+SPACE		| Switch the Mode Color.
+
+ALT		| Switch back the Mode Color.
+
+ALT_GR		| Set / Unset the Background Color.
+
+TAB		| Switch the palette Color.
+		|  If the Background Color is set : Switch the background color.
+
+LOCK		| Switch back the palette Color.
+		|  If the Background Color is set : Switch back the background color.
+
+MAJ LEFT	| Roll the palette color.
+		|  If the Background Color is set : Roll the background color.
+
+CTRL LEFT	| Roll back the palette color.
+		|  If the Background Color is set : Roll back the background color.
+
+R		| Set the Red color.
+		|  RGB Color Mode has to be selectionned first (Switch Mode Color).
+
+G		| Set the Green color.
+		|  RGB Color Mode has to be selectionned first (Switch Mode Color).
+
+B		| Set the Blue color.
+		|  RGB Color Mode has to be selectionned first (Switch Mode Color).
+
+H		| Set the Hue.
+		|  HSV Color Mode has to be selectionned first (Switch Mode Color).
+
+S		| Set the Saturation.
+		|  HSV Color Mode has to be selectionned first (Switch Mode Color).
+
+V		| Set the Value.
+		|  HSV Color Mode has to be selectionned first (Switch Mode Color).
+
+F		| Print all available commands in the HUD.
+		|  Print back the Fractal Informations.
+
+W		| Write a map of the displayed fractal.
+		|  The map can be vizualized with the "fdf" program (Fil de Fer / Wireframe).
+		|  See Tips for more details.
+
+
+
+*** MOUSE CONTROLS ***
+
+
+RIGHT  BUTTON (HOLD)	| Move the fractal by moving x-axis and y-axis.
+
+MIDDLE BUTTON (SCROLL)	| Zoom on the fractal.
+			|  The Zoom will focus on the mouse cursor.
+
+
+
+*** MODE COLOR ***
+
+
+0 - Default
+1 - Palette
+2 - Gradient
+3 - BlackMirror (Reversed Black Gradient)
+4 - RGB
+5 - HSV
+
+Specials mode color for Buddhabrot fractal :
+
+0 - Monochrome R/G/B
+1 - Monochrome White
+2 - Radiography
+3 - NASA (Nebulabrot)
+
+
+
+*** PALETTE COLOR ***
+
+
+0 - Gray Shade
+1 - RGB-WB
+2 - Primary
+3 - Neutral
+4 - Pastel
+5 - Fluo
+6 - Chill
+7 - Fire
+8 - Ocean
+9 - Snow
+10 - Camo
+11 - Safari
+12 - Fairy
+13 - Assembly
+14 - Night City
+15 - Cyberpunk
+16 - Spirit
+17 - Toxic
+18 - Matrix
+19 - Google
+
+
+
+*** MATH REMINDER ***
+
+
+- Mandelbrot equation :
+
+  Z(n+1) = Z(n)² + C
+
+   with :
+    Z0 = 0
+    C = X + Yi
+
+
+- Julia equation :
+
+  Z(n+1) = Z(n)² + C
+
+   with :
+    Z0 = X + Yi
+    C = -0.8 + 0.156i
+
+    C can be modified with the mouse in Constant Mode or with the keys [J] / [K].
+
+
+- Burning_Ship equation :
+
+  Z(n+1) = | Z(n)² | + C
+
+   with :
+    Z0 = 0
+    C = X + Yi
+
+
+- Multibrot equation :
+
+  Z(n+1) = Z(n) ^ A + C
+
+   with :
+    Z0 = 0
+    C = X + Yi
+    A = positive power
+
+    A can be modified with the keys [START] / [END] (Correspond to Level).
+
+
+- Buddhabrot equation :
+
+  Z(n+1) = Z(n)² + C
+
+   with :
+    Z0 = 0
+    C = X + Yi
+
+  Note that the Buddhabrot equation is the same that Mandelbrot, but the vizualization method is more complex.
+  See Tips for more details.
+
+
+- Newton equation :
+
+  Z(n+1) = (2 * Z(n)³ + 1 ) / (3 * Z(n)²)
+
+  with :
+    Z0 = X + Yi
+
+
+- Barnsley Coefficients :
+
+	w 	a 	b 	c 	d 	e 	f 	p 	Portion generated
+	ƒ1 	0 	0 	0 	0.16 	0 	0 	0.01 	Stem
+	ƒ2 	0.85 	0.04 	−0.04 	0.85 	0 	1.60 	0.85 	Successively smaller leaflets
+	ƒ3 	0.20 	−0.26 	0.23 	0.22 	0 	1.60 	0.07 	Largest left-hand leaflet
+	ƒ4 	−0.15 	0.28 	0.26 	0.24 	0 	0.44 	0.07 	Largest right-hand leaflet
+
+
+
+*** TIPS ***
+
+
+- mlx_hook :
+	Example for Linux :
+		mlx_hook(conf->win_ptr, KeyPress, KeyPressMask, ft_press_key, conf);
+	Linux masks used :
+		KeyPress       (2) | KeyPressMask         (1L<<0)
+		ButtonPress    (4) | ButtonPressMask      (1L<<2)
+		ButtonPress    (5) | ButtonReleaseMask    (1L<<3)
+		MotionNotify   (6) | PointerMotionMask    (1L<<6)
+		FocusIn        (9) | FocusChangeMask     (1L<<21)
+		Expose        (12) | ExposureMask        (1L<<15)
+		DestroyNotify (17) | StructureNotifyMask (1L<<17)
+	For additional Linux masks, see :
+		X11/Xlib.h
+		http://refspecs.linuxfoundation.org/LSB_1.3.0/gLSB/gLSB/libx11-ddefs.html
+
+- DestroyNotify fix (Linux only) :
+	There seems to be a bug with this specific version of MinilibX-linux.
+	Indeed, DestroyNotify, has to be set to "33" to work properly.
+	It is normally defined to "17" by Xlib standard (see mlx_hook for mor details).
+
+- Mac OS Install (fix keyboard) :
+	Before to compile, open the file "Makefile".
+		Replace the line 37 : "minilibx-macos" instead of "minilibx-linux".
+		Replace the line 102 : "keys_macos.h" instead of "keyx_linux.h"
+		Replace all the line 112 with :
+			LBX_FLAGS = -L$(LIB_PATH)/minilibx-macos -lmlx -framework OpenGL -framework AppKit
+	Then, open the file "/include/fractol.h".
+		Replace the line 25 : "keys_macos.h" instead of "keys_linux.h".
+	Finally, open the file "/src/ft_start_hook.c".
+		Remove all the Linux masks and replace with '0'.
+			See the "mlx_hook" part above for more details.
+			Example for Mac Os :
+				mlx_hook(conf->win_ptr, KeyPress, 0, ft_press_key, conf);
+	 Now, compile normally the program with the command "make".
+	 The keyboard and mouse events will now work properly.
+
+- Mac OS Install (fix 'X11/Xlib.h' missing)
+	Install XQuartz to get the 'X11 lib' on Mac OS.
+		https://www.xquartz.org/
+	Then create a symbolic link as below :
+		ln -s /opt/X11/include/X11 /usr/local/include/X11
+	Now, compile normally the program with the command "make".
+
+- Mac OS Install (fix unknown type as 't_xvar')
+	Before to compile, open the file "/include/structs.h".
+		Replace the line 190 : "void" instead of "t_xvar".
+	Then, open the file "/src/ft_end.c".
+		Comment the line 85 as following : "//XCloseDisplay(conf->mlx_ptr->display);"
+	Now, compile normally the program with the command "make".
+
+- mlx_get_data_addr :
+	bpp    = bits per pixels
+	size_l = nb bytes used to store one line in memory
+	endian = little endian (0) or big endian (1)
+
+- Buddhabrot :
+	Go to Buddhabrot fractal (fractal number 5).
+	 Increase the imax value (key PAGE_UP) to get better results.
+	 Increase the filter value (key MAJ_RIGHT) to get darker contrast.
+	Explanation :
+	 Buddhabrot fractal is calculated in the same way than Mandelbrot.
+	 But the visualization of the datas is different.
+	 With Mandelbrot, a pixel color depends only of the value of its iteration max.
+	 With Buddhabrot, there is a counter for each pixel.
+	 A pixel counter is increased each time that its corresponding pixel is visited during the iteration process.
+	 So there are many more pixels taken into account.
+	 With a high number of iteration max, the fractal take the form of "Buddha".
+
+
+- Nebulabrot :
+	Go to Buddhabrot fractal (fractal number 5).
+	 Switch to NASA Color Mode (key SPACE, Special Color Mode number 4).
+	 Increase the value of Sample (Key INSER) to get better results.
+	 Decrease the value of Level (key END) if the colors start to be slobbery.
+	 Increase the value of anti-alliasing (SSAA) (key A) to get incredible results.
+	Explanation :
+	 To transform a Buddhabrot to Nebulabrot and get an astronomy picture effect, the same technique than NASA is used.
+	 The technical is called False-Color Imaging.
+	 It consists to make a radiography of an object, like a galaxy, at different frequency.
+	 Here, the fractal replace the galaxy and the iteration max replace the frequency.
+	 The default value of iteration max is used for Blue, then multiplied by 10 for Green, then multiplied by 100 for Red.
+
+	Example :
+	 Red (Imax = 3200) - Green (Imax = 320) - Blue (Imax = 32)
+
+- 3D Fractals :
+  	You can visualize fractal in 3D Isometric with an other program called "Fil de Fer".
+ 	 This program has been made by the same autor.
+	First, generate a FdF file with option [-w] or the key [W].
+	 The file is created at the root of the fractol folder.
+	 The filename includes the name of the fractal, then the date and the time of the file creation.
+	Then, start the "fdf" program followed by the path of the file newly created.
+  	 Use "./fdf -h" for more details.
+
+- Split your terminal and start a new fractol instance to visualize various fractals at the same time.
+
+- Press "[CMD] + [C]" in the terminal to force quit in case of emergency.
+
+- For other issue or additionnal request, please contact the support team (see "auteur" file).
