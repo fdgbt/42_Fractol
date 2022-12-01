@@ -47,6 +47,15 @@ make fclean
 ```
 ./fractol -l
 ```
+1) Mandelbrot		
+2) Julia		
+3) Burning_ship		
+4) Multibrot		
+5) Buddhabrot		
+6) Newton		
+7) Koch		
+8) Sierpinski		
+9) Barnsley
 
 ## MAN (complete user manual)
 ```
