@@ -10,8 +10,8 @@ Many natural phenomena – such as the appearance of romanesco cabbage – have 
 https://en.wikipedia.org/wiki/Fractal
 
 ## Expected Result
-A minimal of three fractals were expected (Mandelbrot, Julia, and free choice for the last.  
-In my case, the program includes 9 different and interesting fractals.  
+A minimal of three fractals were expected with two specifically mandatory: Mandelbrot and Julia.  
+In my case, the program includes 9 different and interesting fractals. See the complete list below.  
 They are all configurable in depth, with colors customization, mathematical variables, interaction modes, advanced zoom, etc.  
 
 Look for the MAN to see all the possibilities and commands!
